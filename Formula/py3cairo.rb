@@ -19,6 +19,7 @@ class Py3cairo < Formula
 
   def install
     ENV["PYTHON"] = "python3"
+    ENV["PYTHON_CONFIG"] = "#{`python3 -c 'import sys;print(sys.prefix)'`.chomp}/lib/python3.6/config-3.6m-x86_64-linux-gnu/python-config.py"
     system "./waf", "configure", "--prefix=#{prefix}"
     system "./waf", "build"
     system "./waf", "install"
